@@ -1,4 +1,4 @@
-import { LiveReload, Outlet, Links } from "@remix-run/react";
+import { LiveReload, Outlet, Links, useCatch } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
 import globalStylesUrl from "./styles/global.css";
@@ -24,18 +24,46 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export default function App() {
+function Document({
+  children,
+  title = `Remix: So great, it's funny!`,
+}: {
+  children: React.ReactNode;
+  title?: string;
+}) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <title>Remix: So great, it's funny!</title>
+        <title>{title}</title>
         <Links />
       </head>
       <body>
-        <Outlet />
+        {children}
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+    </Document>
+  );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  return (
+    <Document title={`${caught.status} ${caught.statusText}`}>
+      <div className="error-container">
+        <h1>
+          {caught.status} {caught.statusText}
+        </h1>
+      </div>
+    </Document>
   );
 }
