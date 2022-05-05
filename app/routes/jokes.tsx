@@ -13,6 +13,11 @@ type LoaderData = {
   jokeListItems: Array<{ id: string; name: string }>;
 };
 
+/**
+ * @param param0 - The request parameters.
+ * @returns - Same as the loader function: A response, or
+ * (as a convenience) a serializable JavaScript object
+ */
 export const loader: LoaderFunction = async () => {
   const data: LoaderData = {
     jokeListItems: await db.joke.findMany({
