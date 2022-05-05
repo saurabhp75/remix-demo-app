@@ -157,3 +157,17 @@ export function CatchBoundary() {
     );
   }
 }
+
+
+/**
+ * Throwing an error (throw new Error("Testing Error Boundary");) 
+ * from loader/action/component will invoke the ErrorBoundary. 
+ * @returns 
+ */
+export function ErrorBoundary() {
+  return (
+    <div className="error-container">
+      Something unexpected went wrong. Sorry about that.
+    </div>
+  );
+}

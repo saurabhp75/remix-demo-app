@@ -35,6 +35,11 @@ export default function JokesIndexRoute() {
   );
 }
 
+/**
+ * It might help to think of the unexpected errors as 500-level errors 
+ * (server errors) and the expected errors as 400-level errors
+ * @returns 
+ */
 export function CatchBoundary() {
   const caught = useCatch();
 
@@ -44,4 +49,12 @@ export function CatchBoundary() {
     );
   }
   throw new Error(`Unexpected caught response with status: ${caught.status}`);
+}
+
+export function ErrorBoundary() {
+  return (
+    <div className="error-container">
+      I did a whoopsies.
+    </div>
+  );
 }
