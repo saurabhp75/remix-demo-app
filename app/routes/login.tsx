@@ -233,10 +233,10 @@ export default function Login() {
       <div className="links">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link prefetch="intent" to="/">Home</Link>
           </li>
           <li>
-            <Link to="/jokes">Jokes</Link>
+            <Link prefetch="intent" to="/jokes">Jokes</Link>
           </li>
         </ul>
       </div>

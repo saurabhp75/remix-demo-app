@@ -152,17 +152,18 @@ export function CatchBoundary() {
     return (
       <div className="error-container">
         <p>You must be logged in to create a joke.</p>
-        <Link to="/login">Login</Link>
+        <Link prefetch="intent" to="/login">
+          Login
+        </Link>
       </div>
     );
   }
 }
 
-
 /**
- * Throwing an error (throw new Error("Testing Error Boundary");) 
- * from loader/action/component will invoke the ErrorBoundary. 
- * @returns 
+ * Throwing an error (throw new Error("Testing Error Boundary");)
+ * from loader/action/component will invoke the ErrorBoundary.
+ * @returns
  */
 export function ErrorBoundary() {
   return (

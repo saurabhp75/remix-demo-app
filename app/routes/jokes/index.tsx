@@ -30,15 +30,17 @@ export default function JokesIndexRoute() {
     <div>
       <p>Here's a random joke:</p>
       <p>{data.randomJoke.content}</p>
-      <Link to={data.randomJoke.id}>"{data.randomJoke.name}" Permalink</Link>
+      <Link prefetch="intent" to={data.randomJoke.id}>
+        "{data.randomJoke.name}" Permalink
+      </Link>
     </div>
   );
 }
 
 /**
- * It might help to think of the unexpected errors as 500-level errors 
+ * It might help to think of the unexpected errors as 500-level errors
  * (server errors) and the expected errors as 400-level errors
- * @returns 
+ * @returns
  */
 export function CatchBoundary() {
   const caught = useCatch();
@@ -52,9 +54,5 @@ export function CatchBoundary() {
 }
 
 export function ErrorBoundary() {
-  return (
-    <div className="error-container">
-      I did a whoopsies.
-    </div>
-  );
+  return <div className="error-container">I did a whoopsies.</div>;
 }
